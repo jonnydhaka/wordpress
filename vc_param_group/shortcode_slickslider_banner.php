@@ -10,9 +10,6 @@
 
    public function themename_banner_func ($atts, $content = null){
         extract(shortcode_atts(array(
-            'icon1' => '',
-            'icon2' => '',
-            'icon3' => '',
             'heading1_list' => '',
             'heading2_list' => '',
             'heading3_list' => '',
