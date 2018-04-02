@@ -15,8 +15,6 @@ vc_map(array(
 		"heading" => __("Heading 1",""),
 		"param_name" => "heading_1",
 	),
-	
-	
 	array(
 		 'type' => 'param_group',
 		  'value' => '',
@@ -51,13 +49,9 @@ vc_map(array(
                 "holder" => "div",
                 "heading" => __( 'Link', 'text-domain' ),
                 "param_name" => "heading1_call_action",
-             ),
-			 
-		
-)
-),
-	
-	
+             ), 
+		)
+	),
 	array(
 		"type" => "textfield",
 		"holder" => "div",
@@ -65,8 +59,6 @@ vc_map(array(
 		"heading" => __("Heading 2",""),
 		"param_name" => "heading_2",
 	),
-	
-	
 	array(
 		 'type' => 'param_group',
 		  'value' => '',
@@ -98,11 +90,7 @@ vc_map(array(
                 "param_name" => "heading2_call_action",
              ),
 		  )
-	   ),
-	
-	
-	
-	
+	),
 	array(
 		"type" => "textfield",
 		"holder" => "div",
@@ -110,8 +98,6 @@ vc_map(array(
 		"heading" => __("Heading 3",""),
 		"param_name" => "heading_3",
 	),
-	
-	
 	array(
 		 'type' => 'param_group',
 		  'value' => '',
@@ -135,9 +121,9 @@ vc_map(array(
 				'heading' => __( 'Icon', 'js_composer' ),
 				'param_name' => 'heading3_bestelicons',
 					'settings' => array(
-					'emptyIcon' => false, // default true, display an "EMPTY" icon?
+					'emptyIcon' => false, 
 					'type' => 'bestelicons',
-					'iconsPerPage' => 200, // default 100, how many icons per/page to display
+					'iconsPerPage' => 200, 
 					),
 				'description' => __( 'Select icon from library.', 'js_composer' ),
 				),
@@ -155,8 +141,6 @@ vc_map(array(
              ),
 		  )
 	   ),
-	
-	
 	)
 ));
 
