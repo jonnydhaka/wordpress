@@ -1,14 +1,14 @@
 <?php
- class Bestel_Slick_Slider_Banner  extends WPBakeryShortCode{
+ class themename_Banner  extends WPBakeryShortCode{
 
     public function __construct()
     {
-        add_shortcode( 'bestel_slick_slider_banner', array($this, 'bestel_core_bestel_slick_slider_banner_func'));
+        add_shortcode( 'themename_banner', array($this, 'themename_banner_func'));
     }
 
 
 
-   public function bestel_core_bestel_slick_slider_banner_func ($atts, $content = null){
+   public function themename_banner_func ($atts, $content = null){
         extract(shortcode_atts(array(
             'icon1' => '',
             'icon2' => '',
@@ -32,7 +32,7 @@
 				<div class="container d-flex flex-column align-items-end h-100">
 					<div class="expand-btn expand-btn--social" id="expBut1">
 						<a href="#" class="expand-btn-first">
-							<i class="<?php echo apply_filters('replace_icon_html',$atts,'1') ; ?>"></i>
+						
 							<div><?php echo $heading_1 ; ?></div>
 						</a>
                         <?php 
@@ -66,7 +66,7 @@
 					</div>
 					<div class="expand-btn expand-btn--offer" id="expBut2">
 						<a href="#" class="expand-btn-first">
-							<i class="<?php echo apply_filters('replace_icon_html',$atts,'2') ; ?>"></i>
+							
 							<div><?php echo $heading_2 ; ?></div>
 						</a>
                         <?php 
@@ -104,7 +104,7 @@
 						</div>
 					<div class="expand-btn" id="expBut3">
 						<a href="#" class="expand-btn-first">
-							<i class="<?php echo apply_filters('replace_icon_html',$atts,'3') ; ?>"></i>
+						
 							<div><?php echo $heading_3 ; ?></div>
 						</a>
                         <?php 
@@ -152,4 +152,4 @@
     }
 }
 
-    new Bestel_Slick_Slider_Banner();
+    new themename_banner();
