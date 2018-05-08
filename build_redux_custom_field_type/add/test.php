@@ -28,7 +28,8 @@ if ( ! class_exists( 'ReduxFramework_test' ) ) {
          */
         function render() {
 			
-			 echo '<input  type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] .'" class="regular-text " /><br />';
+			 echo '<input  type="text" id="' . $this->field['id'] . '1" name="' . $this->field['name'] . '[0]" class="regular-text " /><br />';
+			 echo '<input  type="text" id="' . $this->field['id']. '2" name="' . $this->field['name'].'[1]" class="regular-text " /><br />';
 			
 			
 			}
