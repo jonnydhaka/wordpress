@@ -1,0 +1,12 @@
+git init
+git add . OR
+git add /Applications/XAMPP/xamppfiles/htdocs/wordpress_test/vc_param_group/vc_map_slickslider_banner.php -f
+git commit -m "file change again"
+git remote add origin https://github.com/jonnydhaka/wordpress.git
+git push -u origin master
+git pull origin master OR
+git pull origin master --allow-unrelated-histories
+
+
+
+git status -v
