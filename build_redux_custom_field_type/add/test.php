@@ -28,8 +28,13 @@ if ( ! class_exists( 'ReduxFramework_test' ) ) {
          */
         function render() {
 			
-			 echo '<input  type="text" id="' . $this->field['id'] . '1" name="' . $this->field['name'] . '[0]" class="regular-text " /><br />';
-			 echo '<input  type="text" id="' . $this->field['id']. '2" name="' . $this->field['name'].'[1]" class="regular-text " /><br />';
+			 echo '<input  type="text" id="' . $this->field['id'] . '1" name="' . $this->field['name'] . '[0][title]" class="regular-text " /><br />';
+			 echo '<input  type="text" id="' . $this->field['id']. '2" name="' . $this->field['name'].'[0][url]" class="regular-text " /><br />';
+			  
+			  echo '<span class="bestel_upload_image_button button">Upload</span>';
+			  echo '<input  type="hidden" id="' . $this->field['id']. '3" name="' . $this->field['name'].'[0][media][id]" class="regular-text " />';
+			  echo '<input  type="hidden" id="' . $this->field['id']. '3" name="' . $this->field['name'].'[0][media][url]" class="regular-text " />';
+			  echo '<span class="bestel_remove_image_button button" style="display:none;">Remove</span>';
 			
 			
 			}
@@ -40,8 +45,8 @@ if ( ! class_exists( 'ReduxFramework_test' ) ) {
          *
          * @since ReduxFramework 3.0.0
          */
-        /*function enqueue() {
-            if ($this->parent->args['dev_mode']) {
+        function enqueue() {
+           /* if ($this->parent->args['dev_mode']) {
                 wp_enqueue_style(
                     'redux-field-text-css',
                     ReduxFramework::$_url . 'inc/fields/text/field_text.css',
@@ -49,7 +54,15 @@ if ( ! class_exists( 'ReduxFramework_test' ) ) {
                     time(),
                     'all'
                 );
-            }
-        }*/
+            }*/
+			
+			wp_enqueue_script(
+                'custom_field',
+                 get_template_directory_uri().'/add/custom_field.js',
+                array( 'jquery', 'redux-js' ),
+                time(),
+                true
+            );
+        }
     }
 }
