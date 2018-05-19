@@ -1,0 +1,16 @@
+
+
+Add**/.DS_Store into .gitignore for the sub directory
+
+If .DS_Store already committed:
+
+find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+
+To ignore them in all repository: (sometimes it named ._.DS_Store)
+
+echo ".DS_Store" >> ~/.gitignore_global
+echo "._.DS_Store" >> ~/.gitignore_global
+echo "**/.DS_Store" >> ~/.gitignore_global
+echo "**/._.DS_Store" >> ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
