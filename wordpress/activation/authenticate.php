@@ -44,13 +44,13 @@ function db_function( $username , $purchase_code , $site, $theme ) {
 	$secret = "secret";
 	$token = md5($username.$purchase_code.$secret);
 	$database = new db();
-	$database->query("SELECT site, token  FROM authUser WHERE purchase_code  = :purchase_code  AND username   = :username  AND theme   = :theme ");
+	$database->query("SELECT site, token  FROM tableName WHERE purchase_code  = :purchase_code  AND username   = :username  AND theme   = :theme ");
 	$database->bind(':purchase_code', $purchase_code);
 	$database->bind(':username',$username);
 	$database->bind(':theme',$theme);
 	$row = $database->single();
 	if(empty($row)){
-		$database->query('INSERT INTO authUser ( site, purchase_code, username, token, theme) VALUES(:site, :purchase_code, :username, :token, :theme)');
+		$database->query('INSERT INTO tableName ( site, purchase_code, username, token, theme) VALUES(:site, :purchase_code, :username, :token, :theme)');
 		$database->bind(':site',$site);
 		$database->bind(':purchase_code', $purchase_code);
 		$database->bind(':username',$username);
