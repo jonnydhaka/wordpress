@@ -49,14 +49,18 @@ function theme_name_purchase_authenticate() {
 		if ( $username != '' && $purchase_code != '' ) {
 			$url = "http://url/authenticate.php?username={$username}&purchasecode={$purchase_code}&theme=Theme Name&site=".get_site_url();
 			$response = wp_remote_get( $url );
-			//print_r($response );
-			$response_body = json_decode($response['body']);
-			if ( 'invalid' != $response_body->massage  ) {
-				update_option( 'theme_name_activation', 1 );
-				update_option( 'theme_name_token', $response_body->token );
-			}else{
+			if(isset($response->errors)){
 				update_option( 'theme_name_activation', 0 );
 				update_option( 'theme_name_token', '' );
+			}else{
+				$response_body = json_decode($response['body']);
+				if ( 'invalid' != $response_body->massage  ) {
+					update_option( 'theme_name_activation', 1 );
+					update_option( 'theme_name_token', $response_body->token );
+				}else{
+					update_option( 'theme_name_activation', 0 );
+					update_option( 'theme_name_token', '' );
+				}
 			}
 		}
 	}
@@ -64,3 +68,33 @@ function theme_name_purchase_authenticate() {
 }
 
 add_action( 'after_setup_theme', 'theme_name_purchase_authenticate' );
+
+// plugin update from salf hosted 
+add_filter ('pre_set_site_transient_update_plugins', 'display_transient_update_plugins');
+function display_transient_update_plugins ($transient)
+{
+	$username      = get_option( 'theme_username' );
+	$purchase_code = get_option( 'theme_purchase_code' );
+	$activation = get_option( 'theme_name_activation' );
+	$token = get_option( 'theme_name_token' );
+	if ( $activation != 1 && $token == '' ) {
+		//$data=get_plugin_data( WP_PLUGIN_DIR.'/plugin-folder/plugin-page.php',  true, true );
+		$url = "https://url/secure/json.php";
+		$response = wp_remote_get( $url );
+		if(!isset($response->errors)){
+			$response = json_decode( $response['body'] );
+			foreach ($response  as $key=>$item) {
+				$data=get_plugin_data( WP_PLUGIN_DIR.'/'.$key,  true, true );
+				if( version_compare( $data['Version'], $item->new_version, '<' ) ){
+					$item->url = "https://url/download.php?username={$username}&purchasecode={$purchase_code}&token={$token}&filename=js_composer&theme=Theme Nam&site=".get_site_url();
+					$item->package = "https://url/download.php?username={$username}&purchasecode={$purchase_code}&token={$token}&filename=js_composer&theme=Theme Nam&site=".get_site_url();
+					$transient->response[ $key ] = $item;
+				}
+			}
+		}
+		/*echo '<pre>';
+		print_r($transient);
+		echo '</pre>';*/
+		return $transient;
+	}
+}
