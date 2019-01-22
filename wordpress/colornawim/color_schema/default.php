@@ -1,7 +1,7 @@
 <?php
 
 $color_schemes['default'] = array(
-    'label' => __('Default', 'car-repair-services'),
+    'label' => __('Default', 'ctheme-name'),
     'colors' => array(
         'theme_name_colors[menu_link_bg_color]' => '#fede00',
         'theme_name_colors[heading2_color]' => '#ffffff',

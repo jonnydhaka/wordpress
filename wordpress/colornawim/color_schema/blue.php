@@ -1,7 +1,7 @@
 <?php
 
 $color_schemes['blue'] = array(
-    'label' => __('Blue', 'car-repair-services'),
+    'label' => __('Blue', 'theme-name'),
     'colors' => array(
         'theme_name_colors[menu_link_bg_color]' => '#1e73be',
         'theme_name_colors[heading2_color]' => '#ffffff',
