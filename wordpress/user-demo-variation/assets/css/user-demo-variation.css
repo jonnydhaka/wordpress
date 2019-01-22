@@ -1,0 +1,290 @@
+/*
+
+    tt-boxedbutton
+
+*/
+
+@media (min-width: 1025px) {
+    #tt-boxedbutton {
+        top: 26.8%;
+        right: 5px;
+        position: fixed;
+        z-index: 8;
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        direction: ltr;
+    }
+    #tt-boxedbutton .rtlbutton:not(:first-child) {
+        margin-top: 5px;
+    }
+    #tt-boxedbutton .rtlbutton {
+        display: block;
+        font-family: "Hind", sans-serif;
+        color: #ffffff;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-transition: .2s ease-out;
+        -o-transition: .2s ease-out;
+        -moz-transition: .2s ease-out;
+        transition: .2s ease-out;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+    #tt-boxedbutton .rtlbutton .box-btn {
+        display: inline-block;
+        float: left;
+        width: 47px;
+        height: 35px;
+        font-weight: 500;
+        line-height: 2.65;
+        cursor: pointer;
+        text-align: center;
+        background-color: #2879fe;
+    }
+    #tt-boxedbutton .rtlbutton .box-btn i {
+        font-size: 20px;
+        line-height: 1.65;
+    }
+    #tt-boxedbutton .rtlbutton .box-description {
+        display: inline-block;
+        float: left;
+        height: 35px;
+        line-height: 2.65;
+        background-color: #2879fe;
+        width: 0;
+        font-weight: 300;
+        padding: 0 0px 0 0;
+        overflow: hidden;
+        white-space: nowrap;
+        -moz-transition: width 0.2s linear;
+        -o-transition: width 0.2s linear;
+        -webkit-transition: width 0.2s linear;
+        transition: width 0.2s linear;
+    }
+    #tt-boxedbutton .rtlbutton .box-disable {
+        display: inline-block;
+        float: left;
+        width: 0px;
+        height: 35px;
+        font-weight: 300;
+        line-height: 2.65;
+        color: #2879fe;
+        -moz-transition: width 0.2s linear;
+        -o-transition: width 0.2s linear;
+        -webkit-transition: width 0.2s linear;
+        transition: width 0.2s linear;
+    }
+    #tt-boxedbutton .rtlbutton:hover {
+        width: auto;
+    }
+    #tt-boxedbutton .rtlbutton:hover .box-description {
+        padding: 0 10px 0 0;
+        width: 140px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    #tt-boxedbutton .rtlbutton.active .box-btn {
+        background-color: #191919;
+    }
+    #tt-boxedbutton .rtlbutton.active .box-description {
+        width: 0;
+        padding: 0;
+        background-color: #191919;
+    }
+    #tt-boxedbutton .rtlbutton.active .box-disable {
+        width: 55px;
+        padding: 0 10px 0 0;
+        background-color: #191919;
+    }
+}
+
+@media (max-width: 1024px) {
+    #tt-boxedbutton {
+        display: none;
+    }
+}
+
+#tt-boxedbutton .rtlbutton-color {
+    margin-top: 5px;
+    position: relative;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 16px 5px 11px;
+    white-space: nowrap;
+    background-color: #191919;
+    height: 30px;
+    border-radius: 6px;
+    transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -webkit-transform: translate(calc(100% + 5px), 0);
+    -ms-transform: translate(calc(100% + 5px), 0);
+    transform: translate(calc(100% + 5px), 0);
+    -webkit-transform: translate3d(calc(100% + 5px), 0, 0);
+    transform: translate3d(calc(100% + 5px), 0, 0);
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description .box-title {
+    font-family: "Hind", sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    padding-right: 7px;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch1 {
+    background-color: #2879fe;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch2 {
+    background-color: #08da97;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch3 {
+    background-color: #8cc34b;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch4 {
+    background-color: #ff9801;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch5 {
+    background-color: #fe5722;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch6 {
+    background-color: #ed2114;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch7 {
+    background-color: #ef5e95;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a.colorswatch8 {
+    background-color: #b704eb;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li a:hover {
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li.active {
+    pointer-events: none;
+}
+
+#tt-boxedbutton .rtlbutton-color .box-description ul li.active a:before {
+    content: "\ea11";
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1;
+    position: relative;
+    left: 3px;
+    top: 2px;
+    font-family: "wokiee";
+    font-style: normal;
+    font-weight: 400;
+}
+
+#tt-boxedbutton .rtlbutton-color:hover .box-description {
+    -webkit-transform: translate(0%, 0);
+    -ms-transform: translate(0%, 0);
+    transform: translate(0%, 0);
+    -webkit-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+html.ie #tt-boxedbutton .rtlbutton-color .box-description {
+    right: -390px;
+    width: 380px;
+}
+
+html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
+    right: 0px;
+}
