@@ -16,10 +16,10 @@
 <body>
 <?php
 $array=array();
-$array['car']['themename']='Car Repair Service';
+$array['car']['themename']='Car';
 $array['car']['oldfile']='http://abc.com/car/car3/wp-content/uploads/sites/7';
 $array['car']['newfile']='http://abc.com/car';
-$array['com']['themename']='Computer Repair';
+$array['com']['themename']='Computer';
 $array['com']['oldfile']='http://abc.com/car/car4/wp-content/uploads/sites/7';
 $array['com']['newfile']='http:/abc.com/car';
 ?>
