@@ -17,11 +17,11 @@
 <?php
 $array=array();
 $array['car']['themename']='Car Repair Service';
-$array['car']['oldfile']='http://smartdata.tonytemplates.com/car-repair-service/car3/wp-content/uploads/sites/7';
-$array['car']['newfile']='http://smartdata.tonytemplates.com/car-repair-service';
+$array['car']['oldfile']='http://abc.com/car/car3/wp-content/uploads/sites/7';
+$array['car']['newfile']='http://abc.com/car';
 $array['com']['themename']='Computer Repair';
-$array['com']['oldfile']='http://smartdata.tonytemplates.com/car-repair-service/car4/wp-content/uploads/sites/7';
-$array['com']['newfile']='http://smartdata.tonytemplates.com/car-repair-service2';
+$array['com']['oldfile']='http://abc.com/car/car4/wp-content/uploads/sites/7';
+$array['com']['newfile']='http:/abc.com/car';
 ?>
     <div class="container">
 		<h1>XML Image Url Change</h1>
