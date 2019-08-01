@@ -1,0 +1,2 @@
+# removes staged and working directory changes
+git reset --hard
