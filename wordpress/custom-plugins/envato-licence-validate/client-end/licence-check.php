@@ -3,7 +3,7 @@
 Plugin Name: Envato Licence Check
 Plugin URI: http://wordpress.org/plugins/hello-dolly/
 Description: This plugin help you to check your purchase code
-Author: Muhammod Arifur Rahman
+Author: example
 Version: 1.0
 Author URI: http://example.com/
  */
