@@ -156,10 +156,10 @@ function sm_elv_process_request(){
         $envato_Licence_Valicator = new Envato_Licence_Valicator();
         $token = $wp_query->query_vars['token'];
         $status=$envato_Licence_Valicator->checkAlreadyActive($purchase_code, $domain_name,$token );
-        if($purchase_code=='localsdtest'){
+        if($purchase_code==''){
             $status=1;
         }
-		
+
         $statusarray=array('1','5');
         if( in_array($status,$statusarray)  ){
             $filename= $wp_query->query_vars['filename'];
@@ -194,7 +194,7 @@ function sm_elv_process_request(){
     if (isset($action) && ($action == "jsonread")) {
         $envato_Licence_Valicator = new Envato_Licence_Valicator();
         $status=$envato_Licence_Valicator->checkAlreadyActive($purchase_code, $domain_name);
-        if($purchase_code=='localsdtest'){
+        if($purchase_code==''){
             $status=1;
         }
         if ($status) {
@@ -271,7 +271,7 @@ class Envato_Licence_Valicator{
         $domain_name = $wp_query->query_vars['site_url'];
         //now we will check if the module activated in our server, if exits then we will remove the record
         $licence_deactivation_remove_status = $this->options['elv_remove_deactivate_site'];
-		
+
         // later we have to retrive from database and then check it is activated or not
         if ($this->checkAlreadyActive($purchase_code, $domain_name) && ($licence_deactivation_remove_status == 1)) {
             $table_name = $wpdb->prefix . 'envato_licence_info';
@@ -310,7 +310,7 @@ class Envato_Licence_Valicator{
 
     public function activate_license($purchase_code)
     {
-        
+
         global $wpdb, $wp_query;
 
         $purchase_key = trim($purchase_code['key']);
@@ -322,16 +322,16 @@ class Envato_Licence_Valicator{
 
         $licence_status = $this->checkAlreadyActive($purchase_key, $domain_name);
 
-        if($purchase_key=='localsdtest'){
+        if($purchase_key==''){
             $data = array(
                 "success" => true,
                 "status" => 'valid',
-				'token' => 'tokenforlocalhost',
+				'token' => '',
             );
             sm_evl_output($data);
         }
-		
-		
+
+
         //  1   :  "domain exits and already activated";
         //  2   :  "domain exits and deactivated"; // this means this purchase key found in our database
         //  3   :  "licence already activated other domain"; // this means this purchase key found in our database
@@ -339,12 +339,12 @@ class Envato_Licence_Valicator{
         if (EL_DEBUG == true) {
             echo '<br>licence_statut : ' . $licence_status;
         }
-		
-		
+
+
 		if($licence_status == '7'){
 			 $table_name = $wpdb->prefix . 'envato_licence_info';
 			 $visittime = time();
-			 $secret = "SmartData-Bangladesh";
+			 $secret = "";
 	         $token = md5($body->item->id.$purchase_key.$secret);
 			$status = $wpdb->update(
                 $table_name,
@@ -354,7 +354,7 @@ class Envato_Licence_Valicator{
 					'token' => $token,
                 ),
                 array('purchase_key' => $purchase_key)
-               
+
             );
 			 $data = array(
                 "success" => true,
@@ -411,7 +411,7 @@ class Envato_Licence_Valicator{
             );
             sm_evl_output($data);
 
-        } else { 
+        } else {
             $this->url = 'https://api.envato.com/v3/market/author/sale?code=' . urlencode(trim($purchase_key)) . '';
 
             $response = wp_remote_get($this->url,
@@ -436,7 +436,7 @@ class Envato_Licence_Valicator{
                if(isset($body->error) && $body->error!=''){
                     $data['error_code']=$body->error;
                 }
-                
+
                 $licence_fraud_detection_status = $this->options['elv_envato_fraud_detection'];
                 if ($licence_fraud_detection_status == 1) {
                     $data['fraud'] = true;
@@ -458,7 +458,7 @@ class Envato_Licence_Valicator{
 
                 }
             } else {
-                $secret = "SmartData-Bangladesh";
+                $secret = "";
 	            $token = md5($body->item->id.$purchase_key.$secret);
                 $data = array(
                     "success" => true,
@@ -518,7 +518,7 @@ class Envato_Licence_Valicator{
                 return 'Regular License';
         }
     }
-	
+
 	public function getdomainname ($url){
 		$parsehost = parse_url($url);
 		$host_names = explode(".", $parsehost['host']);
@@ -536,46 +536,46 @@ class Envato_Licence_Valicator{
             $sql = "SELECT * FROM $table_name  WHERE  purchase_key='" . $purchase_key . "' AND domain_name='" . $site_domain . "' AND token='" . $token ."'";
             $results = $wpdb->get_results($sql);
             if (empty($results)) {
-                return false; 
+                return false;
             }
         }
-		
-		
+
+
 		$sql = "SELECT * FROM $table_name  WHERE  purchase_key='" . $purchase_key . "' AND domain_name='" . $site_domain . "' AND status=0";
         $results = $wpdb->get_results($sql);
-		
-		
+
+
         if (!empty($results)) {
             if (EL_DEBUG == true) {
                 echo "domain exits and already activated";
             }
-            return "7"; 
+            return "7";
         }
-		
-		
+
+
         $sql = "SELECT * FROM $table_name  WHERE  purchase_key='" . $purchase_key . "' AND domain_name='" . $site_domain . "'";
         $results = $wpdb->get_results($sql);
-		
+
         if (!empty($results)) {
             if (EL_DEBUG == true) {
                 echo "domain exits and already activated";
             }
 			$this->alreadyactive=$results[0]->token;
-            return "1"; 
+            return "1";
         }
-		
-		
+
+
         $domain_name = '';
         $sql = "SELECT * FROM $table_name  WHERE purchase_key='" . $purchase_key . "'";
         $results = $wpdb->get_results($sql);
-		
+
         if (count($results) > 0) {
 
             foreach ($results as $key => $value) {
-                $domain_name = $value->domain_name; 
+                $domain_name = $value->domain_name;
                 $licence_sub_domain_activation_status = $this->options['elv_envato_sub_domain_activation'];
                 $gethost = $this->getdomainname($domain_name);
-                $senthost =  $this->getdomainname($site_domain); 
+                $senthost =  $this->getdomainname($site_domain);
                 if (($domain_name == $site_domain) && ($value->status == 1)) {
                     if (EL_DEBUG == true) {
                         echo "domain exits and already activated";
@@ -591,7 +591,7 @@ class Envato_Licence_Valicator{
                         echo "domain exits and deactivated";
                     }
                     // this means this purchase key found in our database
-					
+
                     return "2";
                 } else {
                     // echo "domain exits and deactivated"; // this means this purchase key found in our database
@@ -602,13 +602,13 @@ class Envato_Licence_Valicator{
                 echo "licence already activated other domain" . "<br>" . "Request domain : " . $site_domain . "<br>" . " Activated domain : " . $domain_name . "<br>";
             }
             // it means purchase code found in database but didn't match with domain so already activated
-			
+
             return "3";
         }
         if (EL_DEBUG == true) {
             echo "licence not found";
         }
-		
+
         return 4;
         // print_r($resutl ) ;die();
         // return $resutl;
