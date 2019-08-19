@@ -8,9 +8,9 @@ Version: 1.0
 Author URI: http://example.com
 text-domain: custom-icon-upload
  */
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 class iconmoonFontAdd
 {
     public $dirpaths = array();
@@ -21,6 +21,7 @@ class iconmoonFontAdd
     public $text_file_name = 'fontarray.txt';
     public $new_json_file_name = 'fontarray.json';
     public $folder_name = '';
+    public $first_icon_name = '';
     public function __construct()
     {
         add_action('admin_menu', array($this, 'custom_icon_upload_menu_add'), 12);
@@ -191,7 +192,10 @@ $fontarray = $this->custom_icon_upload_return_with_title();
         $arr = array();
         foreach ($this->new_json as $key => $value) {
             $font_array[$this->custom_icon_upload_font_name . '-' . $key] = $this->custom_icon_upload_font_name . '-' . $value['class'];
-            $arr['icons'] = $this->custom_icon_upload_font_name . '-' . $value['class'];
+            $arr['icons'][] = $this->custom_icon_upload_font_name . '-' . $value['class'];
+            if ($this->first_icon_name == '') {
+                $this->first_icon_name = $this->custom_icon_upload_font_name . '-' . $value['class'];
+            }
         }
 
         $fp = fopen($this->dirpaths['unzippeddir'] . '/' . $this->new_json_file_name, 'w');
@@ -239,6 +243,7 @@ $fontarray = $this->custom_icon_upload_return_with_title();
             'jsonfilename' => $this->new_json_file_name,
             'icondir' => $this->folder_name,
             'fontname' => $this->custom_icon_upload_font_name,
+            'firsticonname' => $this->first_icon_name,
         );
         update_option('custom_icon_upload_fonts', $fontsoption);
     }
@@ -356,30 +361,29 @@ $fontarray = $this->custom_icon_upload_return_with_title();
         return $icon;
     }
 
-    public function custom_icon_upload_add_icon_new()
+    public function custom_icon_upload_add_icon_new($iconstabs = array())
     {
         $fontsoption = get_option('custom_icon_upload_fonts');
-        //echo '<pre>',print_r($fonts);
-        if (empty($fontsoption)) {
-            return false;
-        }
-
-        foreach ($fontsoption as $key => $font) {
-            if (file_exists($font['maindir'] . $this->new_json_file_name)) {
-
-                $newicons[$font['fontname']] = [
-                    'name' => $font['fontname'],
-                    'label' => $font['fontname'],
-                    'url' => '',
-                    'enqueue' => array($font['mainurl'] . 'style.css'),
-                    'prefix' => '',
-                    'displayPrefix' => $font['fontname'],
-                    'ver' => ECIcons_VERSION,
-                    'fetchJson' => $font['mainurl'] . $this->new_json_file_name,
-                ];
+        //echo '<pre>', print_r($fontsoption);
+        $returnicons = [];
+        if (!empty($fontsoption)) {
+            foreach ($fontsoption as $key => $font) {
+                if (file_exists($font['maindir'] . $this->new_json_file_name)) {
+                    $returnicons[$font['fontname']] = [
+                        'name' => $font['fontname'],
+                        'label' => $font['fontname'],
+                        'url' => '',
+                        'enqueue' => array($font['mainurl'] . 'style.css'),
+                        'prefix' => '',
+                        'displayPrefix' => $font['fontname'],
+                        'labelIcon' => $font['firsticonname'],
+                        'ver' => '1.0',
+                        'fetchJson' => $font['mainurl'] . $this->new_json_file_name,
+                    ];
+                }
             }
         }
-        return $newicons;
+        return array_merge($iconstabs, $returnicons);
     }
 }
 $iconmoonFontAdd = new iconmoonFontAdd();

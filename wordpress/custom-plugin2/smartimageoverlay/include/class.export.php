@@ -6,9 +6,11 @@ class exportprocess
     use siooptionlist {
         siooptionlist::__construct as private __tConstruct;
     }
-    public function __construct($args = array())
+    public $replace_url = '';
+    public function __construct($url = '', $args = array())
     {
         $this->__tConstruct();
+        $this->replace_url = $url;
         global $wpdb, $post;
         $defaults = array(
             'content' => 'all',
@@ -203,10 +205,12 @@ if ('all' == $args['content']) {
             <wp:is_sticky><?php echo intval($is_sticky); ?></wp:is_sticky>
                     <?php if ($post->post_type == 'attachment'): ?>
             <wp:attachment_url><?php $url = wp_get_attachment_url($post->ID);
-                    $url = str_replace(content_url(), get_site_url(), $url);
-                    $url = str_replace('uploads', $this->sio_contentdir_target . $this->sio_contentdir_name, $url);
-                    echo $this->wxr_cdata($url);
-                    ?></wp:attachment_url>
+                    if ($this->replace_url != '') {
+                        $url = str_replace(content_url() . '/uploads/', $this->replace_url, $url);
+                    } else {
+                        $url = str_replace(content_url(), get_site_url(), $url);
+                        $url = str_replace('uploads', $this->sio_contentdir_target . $this->sio_contentdir_name, $url);
+                    }echo $this->wxr_cdata($url);?></wp:attachment_url>
         <?php endif;?>
                     <?php $this->wxr_post_taxonomy();?>
                     <?php
@@ -228,11 +232,11 @@ $postmeta = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->postmeta WHE
                             continue;
                         }
                         ?>
-	            <wp:postmeta>
-	            <wp:meta_key><?php echo $this->wxr_cdata($meta->meta_key); ?></wp:meta_key>
-	            <wp:meta_value><?php echo $this->wxr_cdata($meta->meta_value); ?></wp:meta_value>
-	            </wp:postmeta>
-	                        <?php
+				            <wp:postmeta>
+				            <wp:meta_key><?php echo $this->wxr_cdata($meta->meta_key); ?></wp:meta_key>
+				            <wp:meta_value><?php echo $this->wxr_cdata($meta->meta_value); ?></wp:meta_value>
+				            </wp:postmeta>
+				                        <?php
 endforeach;
                     $_comments = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_approved <> 'spam'", $post->ID));
                     $comments = array_map('get_comment', $_comments);
@@ -270,11 +274,11 @@ $c_meta = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->commentmeta WH
                             continue;
                         }
                         ?>
-	        <wp:commentmeta>
-	        <wp:meta_key><?php echo $this->wxr_cdata($meta->meta_key); ?></wp:meta_key>
-	                <wp:meta_value><?php echo $this->wxr_cdata($meta->meta_value); ?></wp:meta_value>
-	                </wp:commentmeta>
-	                        <?php endforeach;?>
+				        <wp:commentmeta>
+				        <wp:meta_key><?php echo $this->wxr_cdata($meta->meta_key); ?></wp:meta_key>
+				                <wp:meta_value><?php echo $this->wxr_cdata($meta->meta_value); ?></wp:meta_value>
+				                </wp:commentmeta>
+				                        <?php endforeach;?>
             </wp:comment>
                 <?php endforeach;?>
             </item>
