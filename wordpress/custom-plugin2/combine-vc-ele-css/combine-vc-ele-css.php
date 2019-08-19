@@ -8,10 +8,10 @@ error_reporting(-1);
 
 Plugin Name:  Combine VC Elementor CSS
 Description:  Combine VC Elementor CSS.
-Plugin URI:   https://smartdatasoft.com/
+Plugin URI:   https://example.com/
 Version:      1.0
-Author:       Smartdatasoft
-Author URI:   https://smartdatasoft.com/
+Author:       example
+Author URI:   https://example.com/
 Text Domain: combine-vc-ele-css
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html

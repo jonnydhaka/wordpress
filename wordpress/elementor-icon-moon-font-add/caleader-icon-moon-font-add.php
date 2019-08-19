@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Custom Iconmoon Icon Add
-Plugin URI: http://smartdatasoft.com
+Plugin URI: http://example.com
 Description: Add custom Iconmoon Icon.
-Author: smartdatasoft
+Author: example
 Version: 1.0
-Author URI: http://smartdatasoft.com
+Author URI: http://example.com
 text-domain: custom-icon-upload
  */
 ini_set('display_errors', 1);

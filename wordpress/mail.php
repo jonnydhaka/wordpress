@@ -73,7 +73,7 @@ define( 'SMTP_USER',   'admin@smartdata.tonytemplates.com' );    // Username to 
 define( 'SMTP_PASS',   'eM6NZC2tn816' );       // Password to use for SMTP authentication
 define( 'SMTP_HOST',   'mail.smartdata.tonytemplates.com' );    // The hostname of the mail server
 define( 'SMTP_FROM',   'admin@smartdata.tonytemplates.com' ); // SMTP From email address
-define( 'SMTP_NAME',   'Smartdatasoft' );    // SMTP From name
+define( 'SMTP_NAME',   'example' );    // SMTP From name
 define( 'SMTP_PORT',   '587' );                  // SMTP port number - likely to be 25, 465 or 587
 define( 'SMTP_SECURE', 'ssl' );                 // Encryption system to use - ssl or tls
 define( 'SMTP_AUTH',    true );                 // Use SMTP authentication (true|false)

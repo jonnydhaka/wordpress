@@ -8,10 +8,10 @@ error_reporting(-1);
 
 Plugin Name:  Smart Image Overlay
 Description:  Regenerate the Image with demo sticker.
-Plugin URI:   https://smartdatasoft.com/
+Plugin URI:   https://example.com/
 Version:      1.0
-Author:       Smartdatasoft
-Author URI:   https://smartdatasoft.com/
+Author:       example
+Author URI:   https://example.com/
 Text Domain: smartimageoverlay
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html

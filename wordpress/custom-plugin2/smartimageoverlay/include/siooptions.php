@@ -32,8 +32,8 @@ trait siooptionlist
     //  EXAMPLE:----------------------------
     // function example_callback($example)
     // {
-    //     $example['image_watermark_text'] = 'Smartdatasoft';
-    //     $example['sio_contentdir_name'] = 'smartdatasoft';
+    //     $example['image_watermark_text'] = 'example';
+    //     $example['sio_contentdir_name'] = 'example';
     //     $example['image_watermark_text_repater_height'] = 70;
     //     $example['image_watermark_text_repater_width'] = 70;
     //     return $example;

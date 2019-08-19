@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Envato Licence Validation
-Plugin URI: http://smartdatasoft.com
+Plugin URI: http://example.com
 Description: Creates and endpoint to get license key status
 Version: 1.0
-Author: Muhammad Arifur Rahman
-Author URI: http://smartdatasoft.com
+Author: example
+Author URI: http://example.com
 License: GPLv2
  */
 ini_set('display_startup_errors', 1);

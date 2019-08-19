@@ -5,7 +5,7 @@ Plugin Name: xmlread
 Plugin URI: http://localhost/wordpress
 Description: this is the plugin for upload image from xml.
 Version: 1.0
-Author: Smartdatasoft
+Author: example
 */
 
 add_action( 'wp_ajax_uploadXML', 'uploadXML' );

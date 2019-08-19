@@ -4,11 +4,11 @@
  */
 /*
 Plugin Name: User Demo Variation
-Plugin URI: https://smartdatasoft.com/
+Plugin URI: https://example.com/
 Description: Change Color/Rtl/Boxed view for user.
 Version: 1.0
-Author: smartdatasoft
-Author URI: https://smartdatasoft.com/
+Author: example
+Author URI: https://example.com/
 License: GPLv2 or later
 Text Domain: user-demo-variation
 */

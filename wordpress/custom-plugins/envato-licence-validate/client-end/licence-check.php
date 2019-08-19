@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/hello-dolly/
 Description: This plugin help you to check your purchase code
 Author: Muhammod Arifur Rahman
 Version: 1.0
-Author URI: http://smartdatasoft.com/
+Author URI: http://example.com/
  */
 
 define('ENVATOSL_STORE_URL', 'http://localhost/wp-themes/car-repair-services');
