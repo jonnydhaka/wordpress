@@ -1,0 +1,44 @@
+.envato_product_options_panel
+.downloadable_files table td input.input_text {
+    width: 100%;
+    float: none;
+    min-width: 0;
+    margin: 1px 0;
+    padding:5px;
+}
+.envato_product_options_panel .submitdelete  {
+    color: #a00;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.wrap_downloadable_files_wrap , .add-repeatable-row{
+    padding: 10px;
+}
+.envato_product_options_panel .downloadable_files{
+border-width: 0 1px 1px;
+border-style: solid;
+border-color: #e5e5e5;
+}
+.evl_repetable_header{
+    clear: both;
+    background: #f1f1f1;
+    border: 1px solid #e5e5e5;
+    padding: 5px;
+}
+.evl_file_name,.evl_url_name ,.evl_file_url_choose,.evl_action {
+    display: inline-block;
+    vertical-align: top;
+}
+.evl_file_name{
+    width: 19%;
+    margin-right: 20px;
+}
+.evl_url_name{
+    width: 50%;
+}
+.evl_file_url_choose{
+    width: 10%;
+}
+.evl_action{
+    width: 1%;
+}
